@@ -1,7 +1,7 @@
 // import { UserStar } from "lucide-react";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Apiservice } from "../Services/Apiservice";
+import { ApiService } from "../Services/ApiService";
 
 const Register = () => {
     const[formData,setFormData]=useState({
@@ -43,8 +43,15 @@ const Register = () => {
     };
     const handleSubmit=async()=>{
         if(!validate()) return;
-        const res = await Apiservice.post("user/add",{...formData,role:"user"});
-        console.log(res);
+        const res = await ApiService.post("user/add",{...formData,role:"user"});
+        setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            password: ""
+        })
+        setErrors({})
+        navigate('/login')
     }
     const handleInputChange=(e)=>{
         //for assigning user data to formData

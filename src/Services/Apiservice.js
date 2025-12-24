@@ -4,7 +4,7 @@ const api = axios.create({
     baseURL:"http://localhost:3004/"
 })
 
-export const Apiservice ={
+export const ApiService ={
         //path = URL where we want to send data
         //config = data that we want to send
         async get(path,config={}){
