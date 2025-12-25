@@ -13,17 +13,18 @@ import Profile from './Pages/UserLayout/Profile';
 import AdminLayout from './Layout/AdminLayout';
 import Booking from './Pages/AdminLayout/Booking';
 import AdminEvent from './Pages/AdminLayout/Event';
+import AuthGuard from './Guards/AuthGuard';
 
 
 function App() {
  const router = createBrowserRouter([
     {
       path: "/login",
-      element: <Login />
+      element: <AuthGuard requiredAuth={false}><Login /></AuthGuard>
     },
      {
       path: "/register",
-      element: <Register />
+      element: <AuthGuard requiredAuth={false}><Register /></AuthGuard>
     },
     {
       path:"/",
@@ -33,7 +34,7 @@ function App() {
     // User Routes
     {
       path:"user",
-      element: <UserLayout />,
+      element: <AuthGuard requiredAuth={true} allowedRoles={"USER"}> <UserLayout /></AuthGuard>,
       children: [
         {path: "dashboard", element: <UserDashboard />},
         {path: "my-bookings", element: <MyBookings />},
@@ -45,7 +46,7 @@ function App() {
     // admin routes
     {
       path:"admin",
-      element: <AdminLayout />,
+      element:<AuthGuard requiredAuth={true} allowedRoles={"ADMIN"}> <AdminLayout /></AuthGuard>,
       children: [
         {path: "dashboard", element: <AdminDashboard/>},
         {path: "bookings", element: <Booking />},

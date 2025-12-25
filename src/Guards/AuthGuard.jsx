@@ -7,7 +7,7 @@ const AuthGuard = ({
     redirect = "/login"
 }) => {
     const authData = JSON.parse(localStorage.getItem("authData"));
-    const isAuthenticated = !!authData;
+    const isAuthenticated = !!authData;  
     const userRole = authData?.role;
 
     if(!requiredAuth && isAuthenticated){
