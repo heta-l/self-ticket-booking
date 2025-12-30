@@ -50,7 +50,7 @@ const Register = () => {
             phone: "",
             password: ""
         })
-        setErrors({})
+        setError({})
         navigate('/login')
     }
     const handleInputChange=(e)=>{

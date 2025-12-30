@@ -8,7 +8,7 @@ const DefaultRoute= ()=>{
     if(!authData){
         return <Navigate to='/login' replace/>
     }
-    if(role === "admin"){
+    if(role === "ADMIN"){
         return <Navigate to='admin/dashboard' replace />
     }
     if(role === "USER"){

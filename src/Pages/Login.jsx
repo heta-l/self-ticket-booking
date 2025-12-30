@@ -48,7 +48,7 @@ const Login = () => {
     try {
       const res = await ApiService.post("user/login", { ...form, role });
       console.log(res)
-      localStorage.setItem("authData",JSON.stringify(res));
+      localStorage.setItem("authData",JSON.stringify(res.data));
       navigate('/');
     } catch (error) {
       console.log(error);
